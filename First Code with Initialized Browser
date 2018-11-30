@@ -1,0 +1,47 @@
+package newpackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class MyClass {
+	
+	WebDriver driver;
+	
+	
+	//public static void main(String[] args) {
+	
+	@Test
+	public void setup() {
+	
+		// Chrome Driver
+		
+	   System.setProperty("webdriver.chrome.driver", "D:\\Jars\\chromedriver\\chromedriver.exe");
+		
+		
+		WebDriver driver  = new ChromeDriver();
+		
+		// Firefox 
+		
+	//	System.setProperty("webdriver.gecko.driver", "D:\\Jars\\geckodriver.exe");
+		
+		// WebDriver driver  = new FirefoxDriver();
+
+		
+		// to Maximize Browser
+		
+		driver.manage().window().maximize();
+		
+		// To open a browser 
+		
+		driver.get("https://zoe-uat.webspiders.com/");
+				
+		// Write Some Test Case
+		
+		driver.findElement(By.linkText("LOGIN")).click();
+		
+		//GoogleSignIn
+		//driver.findElem
