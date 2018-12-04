@@ -1,0 +1,151 @@
+package newpackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class MyClass {
+	
+	WebDriver driver;
+	
+	
+	//public static void main(String[] args) {\
+	
+	// Common Method
+	
+	
+	public void commonMethod() {
+		
+		// Chrome Driver
+		
+		   System.setProperty("webdriver.chrome.driver", "D:\\Jars\\chromedriver\\chromedriver.exe");
+			
+			
+			WebDriver driver  = new ChromeDriver();
+			
+			// Firefox 
+			//	System.setProperty("webdriver.gecko.driver", "D:\\Jars\\geckodriver.exe");
+			// WebDriver driver  = new FirefoxDriver();
+
+			
+			// to Maximize Browser
+			
+			driver.manage().window().maximize();
+			
+			// To open a browser 
+			
+			driver.get("http://uat.ipi-singapore.com/");
+		
+	}
+	
+	@Test(priority=0)
+	public void setup() {
+		
+		commonMethod();
+	
+		// Write Some Test Case
+		
+		//GoogleSignIn
+		//driver.findElement(By.xpath("//img[@src='/sites/all/themes/custom/zoe/images/google-login.png']")).click();
+		//driver.get("https://accounts.google.com/signin/oauth/oauthchooseaccount?client_id=547028217344-09jcum2b3uqeiei3gbegnmn81l809nst.apps.googleusercontent.com&as=i1_bbDrbLvTY7PcG8JOo5g&destination=https%3A%2F%2Fzoe-uat.webspiders.com&approval_state=!ChRUYlhwcmV1cVA1UVA4MEJ6Tmc4ORIfUTJEbnZxVW92MHNjOEhuU1JuY2dubXFPblA1Q2RoWQ%E2%88%99APNbktkAAAAAXAJj6FJNPlX6eXIchOqJ0IPTwbF7gt-M&oauthgdpr=1&xsrfsig=AHgIfE-Vi71Y_DW2P2OQv4Ux3CbJP39MXA&flowName=GeneralOAuthFlow");
+		//driver.findElement(By.xpath("//div[@id='profileIdentifier']")).click();
+		
+		driver.findElement(By.xpath("//a[contains(text(),'Login')]")).click();
+		
+		
+		driver.findElement(By.xpath("//input[@id='edit-name']")).sendKeys("arup.biswas+siteadmin@webspiders.com");
+		
+		//driver.findElement(By.xpath("//a[@class='save-btn btn-block proceed-btn']")).click();
+		
+		driver.findElement(By.xpath("//input[@id='edit-pass']")).sendKeys("#abcd123");
+		
+		driver.findElement(By.xpath("//input[@id='edit-submit']")).click();
+		
+		//driver.findElement(By.xpath("//div[@id='chatbots']//div[3]//div[1]//div[1]//section[1]//div[1]//a[1]")).click(); //WS Bot
+		
+		driver.findElement(By.xpath("//a[contains(text(),'My Workdesk')]")).click();
+		
+		//Add TechOffer
+		driver.findElement(By.xpath("//a[contains(text(),'Add TechOffers')]")).click();
+		
+		driver.findElement(By.xpath("//input[@id='edit-title']")).sendKeys("TESTNewTO1");
+				
+		
+		//Capturing iFrame
+		
+		driver.switchTo().frame("edit-field-technology-overview-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\")).sendKeys(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown555");
+		driver.switchTo().defaultContent();
+		
+		driver.switchTo().frame("edit-field-technology-features-specs-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("This is Test typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\\\")).sendKeys(\\\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown666");
+		driver.switchTo().defaultContent();
+		
+		driver.switchTo().frame("edit-field-applications-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("What a Test typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\\\")).sendKeys(\\\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown777");
+		driver.switchTo().defaultContent();
+		
+		driver.switchTo().frame("edit-field-customer-benefits-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("What a Test typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\\\")).sendKeys(\\\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown888");
+		driver.switchTo().defaultContent();
+		
+		//Upload File
+		
+		WebElement uploadImage = driver.findElement(By.xpath("//input[@id='edit-field-image-uploads-und-0-upload']"));
+		
+		uploadImage.sendKeys("D:\\test.jpg");
+		
+		driver.findElement(By.xpath("//input[@id='edit-field-image-uploads-und-0-upload-button']")).click();
+		
+			
+		
+		
+		
+		//Drop Down Selection
+		
+		Select oSelection = new Select(driver.findElement(By.id("edit-field-tech-readiness-level-und")));
+		
+		oSelection.selectByVisibleText("TRL7");
+		
+				
+		//Check Box Selection
+		
+		WebElement checkBox = driver.findElement(By.id("edit-field-featured-technology-und")); 
+		
+		checkBox.click();
+		
+		
+
+		
+	
+		
+		
+				
+		
+		
+		//Closing a Browser
+		
+		//driver.quit();
+		
+		System.out.println("Test Case Passed");
+		
+					
+		
+			
+		}
+	
+	
+	@Test(priority=1)
+	public void testTwo()
+	{
+		
+		commonMethod();
+		
+		
+	}
+
+}
