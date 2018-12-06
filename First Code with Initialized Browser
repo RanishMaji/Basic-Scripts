@@ -3,7 +3,9 @@ package newpackage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
@@ -13,36 +15,44 @@ public class MyClass {
 	WebDriver driver;
 	
 	
-	//public static void main(String[] args) {
+	//public static void main(String[] args) {\
+	
+	// Common Method
+	
+	
+	//public void commonMethod() {
+				
+	//}
 	
 	@Test
-	public void setup() {
-	
+	public void setup() throws InterruptedException {
+		
+		
 		// Chrome Driver
 		
-	   System.setProperty("webdriver.chrome.driver", "D:\\Jars\\chromedriver\\chromedriver.exe");
-		
-		
-		WebDriver driver  = new ChromeDriver();
-		
-		// Firefox 
-		
-	//	System.setProperty("webdriver.gecko.driver", "D:\\Jars\\geckodriver.exe");
-		
-		// WebDriver driver  = new FirefoxDriver();
+		   System.setProperty("webdriver.chrome.driver", "D:\\Jars\\chromedriver\\chromedriver.exe");
+			
+			
+			WebDriver driver  = new ChromeDriver();
+			
+					
+			// Firefox 
+			//	System.setProperty("webdriver.gecko.driver", "D:\\Jars\\geckodriver.exe");
+			// WebDriver driver  = new FirefoxDriver();
 
+			
+			// to Maximize Browser
+			
+			driver.manage().window().maximize();
+			
+			
+			// To open a browser 
+			
+			driver.get("http://uat.ipi-singapore.com/");
 		
-		// to Maximize Browser
-		
-		driver.manage().window().maximize();
-		
-		// To open a browser 
-		
-		driver.get("http://uat.ipi-singapore.com/");
-		
+		//commonMethod();
+	
 		// Write Some Test Case
-		
-		
 		
 		//GoogleSignIn
 		//driver.findElement(By.xpath("//img[@src='/sites/all/themes/custom/zoe/images/google-login.png']")).click();
@@ -54,35 +64,75 @@ public class MyClass {
 		
 		driver.findElement(By.xpath("//input[@id='edit-name']")).sendKeys("arup.biswas+siteadmin@webspiders.com");
 		
-		//driver.findElement(By.xpath("//a[@class='save-btn btn-block proceed-btn']")).click();
-		
 		driver.findElement(By.xpath("//input[@id='edit-pass']")).sendKeys("#abcd123");
 		
 		driver.findElement(By.xpath("//input[@id='edit-submit']")).click();
 		
-		//driver.findElement(By.xpath("//div[@id='chatbots']//div[3]//div[1]//div[1]//section[1]//div[1]//a[1]")).click(); //WS Bot
-		
 		driver.findElement(By.xpath("//a[contains(text(),'My Workdesk')]")).click();
+		
 		
 		//Add TechOffer
 		driver.findElement(By.xpath("//a[contains(text(),'Add TechOffers')]")).click();
 		
 		driver.findElement(By.xpath("//input[@id='edit-title']")).sendKeys("TESTNewTO1");
 				
-		driver.findElement(By.xpath("//iframe[@id='edit-field-technology-overview-und-0-value_ifr']")).sendKeys("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\")).sendKeys(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown555");
 		
-		driver.findElement(By.xpath("//iframe[@id='edit-field-technology-features-specs-und-0-value_ifr']")).sendKeys("edit-field-technology-overview-und-0-value_ifr']\")).sendKeys(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.444");
+		//Capturing iFrame
 		
-		driver.findElement(By.xpath("//iframe[@id='edit-field-applications-und-0-value_ifr']")).sendKeys("Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown333.");
+		/*driver.switchTo().frame("edit-field-technology-overview-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\")).sendKeys(\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown555");
+		driver.switchTo().defaultContent();
 		
-		driver.findElement(By.xpath("//table[@id='edit-field-customer-benefits-und-0-value_tbl']//td[@class='mceIframeContainer mceFirst mceLast']")).sendKeys("Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown123.");
+		driver.switchTo().frame("edit-field-technology-features-specs-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("This is Test typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\\\")).sendKeys(\\\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown666");
+		driver.switchTo().defaultContent();
+		
+		driver.switchTo().frame("edit-field-applications-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("What a Test typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\\\")).sendKeys(\\\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown777");
+		driver.switchTo().defaultContent();
+		
+		driver.switchTo().frame("edit-field-customer-benefits-und-0-value_ifr");
+		driver.findElement(By.id("tinymce")).sendKeys("What a Test typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown edit-field-technology-overview-und-0-value_ifr']\\\")).sendKeys(\\\"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown888");
+		driver.switchTo().defaultContent();*/
+		
+		//Upload Image or File
+		
+		WebElement uploadImage = driver.findElement(By.xpath("//input[@id='edit-field-image-uploads-und-0-upload']"));
+		
+		uploadImage.sendKeys("D:\\test.jpg");
+		
+		driver.findElement(By.xpath("//input[@id='edit-field-image-uploads-und-0-upload-button']")).click();
+		
+				
+		//Select Chosen Option
+		
+			
+		driver.findElement(By.xpath("//div[@id='edit_field_technology_category_und_chosen']//input[@value='Choose some options']")).click();
+		
+		driver.findElement(By.xpath("//li[contains(text(),'Chemicals - Analysis')]")).click();
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//div[@id='edit_field_technology_category_und_chosen']//input[@value='Choose some options']")).click();
+		
+		driver.findElement(By.xpath("//li[contains(text(),'Chemicals - Coatings/Paints')]")).click();
+		
+		
+		//WebDriverWait webwait = new WebDriverWait(driver, 10);
+		 //webwait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Chemicals - Analysis')]")));
+		
+		Thread.sleep(5000);
+		
+		
+		
 		
 		//Drop Down Selection
+		
 		Select oSelection = new Select(driver.findElement(By.id("edit-field-tech-readiness-level-und")));
 		
 		oSelection.selectByVisibleText("TRL7");
 		
-		
+				
 		//Check Box Selection
 		
 		WebElement checkBox = driver.findElement(By.id("edit-field-featured-technology-und")); 
@@ -90,27 +140,24 @@ public class MyClass {
 		checkBox.click();
 		
 		
-
-		
 	
-		
-		
-				
-		
-		
 		//Closing a Browser
 		
 		//driver.quit();
 		
 		System.out.println("Test Case Passed");
 		
-				
-					
-		
 			
 		}
-
-
+	
+	
+	//@Test(priority=1)
+	//public void testTwo()
+	//{
 		
+		//commonMethod();
+		
+		
+	//}
 
 }
