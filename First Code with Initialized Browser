@@ -139,7 +139,49 @@ public class MyClass {
 		
 		checkBox.click();
 		
+		//Date Calendar
 		
+		WebElement dateOfexpiry = driver.findElement(By.xpath("//input[@id='edit-field-date-of-expiry-und-0-value-datepicker-popup-0']"));
+		dateOfexpiry.click();
+	
+			//Next desired month and year
+		
+	
+		Select dMonth = new Select(driver.findElement(By.xpath("//select[contains(@class,'ui-datepicker-month')]")));
+		dMonth.selectByValue("1");
+		
+		Select dYear = new Select(driver.findElement(By.xpath("//select[contains(@class,'ui-datepicker-year')]")));
+		dYear.selectByValue("2019");
+		
+		WebElement dDate = driver.findElement(By.xpath("//table[@class='ui-datepicker-calendar']//tbody//tr[2]//td[5]"));
+		dDate.click();
+		
+		//Keyword field
+		
+		driver.findElement(By.xpath("//input[@id='edit-field-tag-und']")).sendKeys("Test");
+		driver.findElement(By.xpath("//input[@id='edit-field-tag-und']")).sendKeys(", ");
+		driver.findElement(By.xpath("//input[@id='edit-field-tag-und']")).sendKeys("Diabetes");		
+
+		//Technology Status
+				
+		WebElement tStatus = driver.findElement(By.xpath("//option[@value='Available']"));
+		tStatus.click();
+		
+		//List Checkbox
+		
+		WebElement cCheckbox = driver.findElement(By.id("edit-field-owner-s-information-privac-und"));
+		//cCheckbox.click();
+		
+		if(cCheckbox.isSelected()) {
+			System.out.println("Checkbox is toggle on");
+		} else {
+			
+			System.out.println("Checkbox is toggle off");
+		}
+			//cCheckbox.click();
+			
+			
+
 	
 		//Closing a Browser
 		
