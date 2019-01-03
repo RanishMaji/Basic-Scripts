@@ -171,17 +171,33 @@ public class MyClass {
 		
 		WebElement cCheckbox = driver.findElement(By.id("edit-field-owner-s-information-privac-und"));
 		//cCheckbox.click();
-		
+				
 		if(cCheckbox.isSelected()) {
-			System.out.println("Checkbox is toggle on");
+		System.out.println("Checkbox is toggle on");
 		} else {
-			
-			System.out.println("Checkbox is toggle off");
+		
+		System.out.println("Checkbox is toggle off");
 		}
-			//cCheckbox.click();
-			
-			
-
+		//cCheckbox.click();				
+						
+		WebElement cCheckbox2 = driver.findElement(By.xpath("//input[@id='edit-field-save-as-draft-und']"));
+		cCheckbox2.click();
+				
+		WebElement cCheckbox3 = driver.findElement(By.xpath("//input[@id='edit-field-shareable-und']"));
+		cCheckbox3.click();
+				
+				
+		driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']//span[contains(text(),'Select One')]")).click();
+		//driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']//input[@type='text']")).sendKeys("Raj Maji");
+		driver.findElement(By.xpath("//select[@id='edit-field-consultant-und']//option[@value='2836'][contains(text(),'Raj Maji')]")).click();
+				
+				
+		//Select cCon = new Select(driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']//li[contains(text(),'Raj Maji')]")));
+		//cCon.selectByVisibleText("Raj Maji");
+		
+		Select sStatus = new Select(driver.findElement(By.xpath("//select[@id='edit-field-tech-offer-status-und']")));
+		sStatus.selectByValue("approved");
+				
 	
 		//Closing a Browser
 		
