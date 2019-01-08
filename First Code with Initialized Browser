@@ -187,13 +187,10 @@ public class MyClass {
 		cCheckbox3.click();
 				
 				
-		driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']//span[contains(text(),'Select One')]")).click();
-		//driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']//input[@type='text']")).sendKeys("Raj Maji");
-		driver.findElement(By.xpath("//select[@id='edit-field-consultant-und']//option[@value='2836'][contains(text(),'Raj Maji')]")).click();
-				
-				
-		//Select cCon = new Select(driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']//li[contains(text(),'Raj Maji')]")));
-		//cCon.selectByVisibleText("Raj Maji");
+		//Scripts for Consultant Chosen field
+			driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']")).click();
+			driver.findElement(By.xpath("//div[@id='edit_field_consultant_und_chosen']/a/span")).click();
+			driver.findElement(By.xpath("//div[@id=\'edit_field_consultant_und_chosen\']/div/ul/li[22]")).click();
 		
 		Select sStatus = new Select(driver.findElement(By.xpath("//select[@id='edit-field-tech-offer-status-und']")));
 		sStatus.selectByValue("approved");
