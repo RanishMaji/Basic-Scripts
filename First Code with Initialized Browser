@@ -195,6 +195,51 @@ public class MyClass {
 		Select sStatus = new Select(driver.findElement(By.xpath("//select[@id='edit-field-tech-offer-status-und']")));
 		sStatus.selectByValue("approved");
 				
+
+
+		//Date of Approved
+				
+		WebElement dApprove = driver.findElement(By.xpath("//input[@id=\"edit-field-date-approved-und-0-value-datepicker-popup-0\"]"));
+		dApprove.click();
+				
+		Select mMonth = new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-month']")));
+		mMonth.selectByValue("0");
+			
+		Select yYear = new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-year']")));
+		yYear.selectByValue("2019");
+				
+		WebElement apDate = driver.findElement(By.xpath("//table[contains(@class,'ui-datepicker-calendar')]//tbody//tr[2]//td[4]"));
+		apDate.click();
+				
+				
+		//Owner's country
+				
+		driver.findElement(By.xpath("//div[@id='edit_field_location_und_0_country_chosen']")).click();
+		driver.findElement(By.xpath("//div[@id='edit_field_location_und_0_country_chosen']/a/span")).click();
+		driver.findElement(By.xpath("//div[@id='edit_field_location_und_0_country_chosen']/div[@class='chosen-drop']")).click();
+		driver.findElement(By.xpath("//div[@id='edit_field_location_und_0_country_chosen']/div/ul/li[7]")).click();
+				
+		//OIC
+				
+		driver.findElement(By.xpath("//div[@id='edit_field_oic_und_chosen']")).click();
+		driver.findElement(By.xpath("//div[@id='edit_field_oic_und_chosen']/a/span")).click();
+		driver.findElement(By.xpath("//div[@id='edit_field_oic_und_chosen']/div/ul/li[22]")).click();
+				
+				
+		//Published Checkbox
+				
+			
+		driver.findElement(By.xpath("//div[@class='vertical-tabs clearfix']//ul[@class='vertical-tabs-list']//li[@class='vertical-tab-button last']")).click();
+		driver.findElement(By.xpath("//strong[contains(text(),'Publishing options')]")).click();
+		driver.findElement(By.xpath("//div[@class='vertical-tabs-panes vertical-tabs-processed']")).click();
+		driver.findElement(By.xpath("//fieldset[@id='edit-options']//div[@class='fieldset-wrapper']")).click();
+				
+		WebElement cPublished = driver.findElement(By.xpath("//input[@id='edit-status']"));
+		cPublished.click();
+				
+		
+	
+	
 	
 		//Closing a Browser
 		
